@@ -1,48 +1,47 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
+
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const stylesHandler = MiniCssExtractPlugin.loader;
 
 module.exports = {
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, "dist"),
   },
+  devServer: {
+    open: true,
+    host: "localhost",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+    }),
+
+    new MiniCssExtractPlugin(),
+
+    // Add your plugins here
+    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+  ],
   module: {
     rules: [
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          'url-loader?limit=10000',
-          'img-loader'
-        ]
+        test: /\.(js|jsx)$/i,
+        loader: "babel-loader",
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        test: /\.css$/i,
+        use: [stylesHandler, "css-loader"],
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-          },
-        ],
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: "asset",
       },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
-        ],
-      },
+
+      // Add your rules for custom modules here
+      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-    }),
-    new MiniCssExtractPlugin(),
-  ],
 };
