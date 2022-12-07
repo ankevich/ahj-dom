@@ -28,6 +28,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg)$/,
+        type: "asset/resource",
+      },
+      {
         test: /\.(js|jsx)$/i,
         loader: "babel-loader",
       },

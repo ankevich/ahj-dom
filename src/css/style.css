@@ -19,7 +19,7 @@ body {
 }
 
 .goblin {
-  /* background-image: url("/src/img/goblin.png"); */
+  background: url("../img/goblin.png");
   background-position: center;
   background-size: contain;
 }
