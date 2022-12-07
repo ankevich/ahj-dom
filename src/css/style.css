@@ -1,6 +1,7 @@
 body {
   color: #999;
 }
+
 .board {
   display: flex;
   flex-wrap: wrap;
@@ -8,6 +9,7 @@ body {
   width: 408px;
   height: 408px;
 }
+
 .cell {
   width: 100px;
   height: 100px;
@@ -17,7 +19,7 @@ body {
 }
 
 .goblin {
-  background-image: url("../../img/goblin.png");
+  /* background-image: url("/src/img/goblin.png"); */
   background-position: center;
   background-size: contain;
 }
